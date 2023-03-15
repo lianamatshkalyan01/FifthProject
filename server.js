@@ -8,7 +8,6 @@ const app = express()
 const port = 5000
 app.use(express.json())
 const jwt = require('jsonwebtoken')
-const _ = require('lodash/lodash')
 require('dotenv').config()
 
 let db = new sqlite3.Database("database.db", (err)=>{
@@ -27,10 +26,5 @@ user_routes.create_users_routes_put(app)
 user_routes.create_users_routes_delete(app)
 user_routes.create_users_routes_register(app)
 user_routes.create_users_routes_login(app)
-
-
-
-
-
 
 app.listen(port)

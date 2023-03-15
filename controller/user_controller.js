@@ -42,11 +42,10 @@ function delete_product(req,res){
 
 function register_user(req, res){
     const name = req.body.name
-    const role = req.body.role
     const username = req.body.username
     const password = req.body.password
     const hashed_password = CryptoJS.SHA256(password).toString()
-    db.run("insert into users(name, role, username, password) values(?,?,?,?)", [name, role, username, hashed_password],(err)=>{
+    db.run("insert into users(name, role, username, password) values(?,?,?,?)", [name, "user", username, hashed_password],(err)=>{
         if(err){
             res.send(JSON.stringify({status: "Error Reigstering"}))
         }
@@ -60,7 +59,7 @@ function login_user(req, res){
         const password = req.body.password
         const hashed_password = CryptoJS.SHA256(password).toString()
         db.get("select * from users where username=?", [username], (err, row)=>{
-            let token = jwt_generate.generateAccessToken(row.username, row.role)
+            let token = jwt_generate.generateAccessToken(username, row.role)
             if(username == row.username && hashed_password == row.password){
                 res.send(JSON.stringify({status: "Logged in", jwt:token}))
             }else{
