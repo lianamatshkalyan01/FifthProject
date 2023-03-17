@@ -30,5 +30,6 @@ function create_users_routes_login(app){
 }
 
 module.exports = {
-    create_users_routes_get, create_users_routes_get_id, create_users_routes_post, create_users_routes_put, create_users_routes_delete, create_users_routes_register, create_users_routes_login
+    create_users_routes_get, create_users_routes_get_id, create_users_routes_post, create_users_routes_put, create_users_routes_delete, create_users_routes_register, create_users_routes_login,
+    
 }
