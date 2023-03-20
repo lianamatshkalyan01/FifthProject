@@ -3,10 +3,10 @@ let db = new sqlite3.Database("database.db")
 const jwt = require('jsonwebtoken')
 
 function get_cart(req, res){
-    const cart_id = req.body.cartid;
-    const product_id = req.body.productid
+    // const cart_id = req.body.cartid;
+    // const product_id = req.body.productid
     
-    db.all("select * from cartitems where cartid=? and productid=?", [cart_id, product_id], (err, data)=>{
+    db.all("select * from cartitems", [], (err, data)=>{
         if(err){
             console.log(err)
         }
